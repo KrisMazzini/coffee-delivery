@@ -21,6 +21,7 @@ export const BannerContainer = styled.header`
     right: -16rem;
 
     position: absolute;
+    z-index: -1;
 
     background-image: url(${background});
     background-repeat: no-repeat;
