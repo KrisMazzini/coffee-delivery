@@ -12,7 +12,6 @@ export const CitySelectorContainer = styled.div`
   cursor: pointer;
 
   span {
-    font-weight: 400;
     font-size: 1.4rem;
     color: ${(props) => props.theme['purple-dark']};
   }
