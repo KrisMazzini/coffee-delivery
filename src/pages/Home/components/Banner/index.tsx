@@ -1,9 +1,56 @@
-import coffeeBanner from '../../../../assets/banner-coffee.svg'
-import { BannerContainer, BenefitsWrapper, TitleWrapper } from './styles'
+import { ReactNode } from 'react'
+import { useTheme } from 'styled-components'
+import {
+  ShoppingCart,
+  Package,
+  Timer,
+  Coffee,
+  IconContext,
+} from 'phosphor-react'
 
-import { BenefitItem } from '../BenefitItem'
+import coffeeBanner from '../../../../assets/banner-coffee.svg'
+
+import {
+  BannerContainer,
+  BenefitItem,
+  BenefitsWrapper,
+  BgColorType,
+  IconWrapper,
+  TitleWrapper,
+} from './styles'
+
+interface BenefitType {
+  icon: ReactNode
+  description: string
+  bgColor: BgColorType
+}
 
 export function Banner() {
+  const theme = useTheme()
+
+  const benefits: BenefitType[] = [
+    {
+      icon: <ShoppingCart />,
+      description: 'Compra simples e segura',
+      bgColor: 'yellow-dark',
+    },
+    {
+      icon: <Package />,
+      description: 'Embalagem mantém o café intacto',
+      bgColor: 'gray',
+    },
+    {
+      icon: <Timer />,
+      description: 'Entrega rápida e rastreada',
+      bgColor: 'yellow',
+    },
+    {
+      icon: <Coffee />,
+      description: 'O café chega fresquinho até você',
+      bgColor: 'purple',
+    },
+  ]
+
   return (
     <BannerContainer>
       <TitleWrapper>
@@ -14,25 +61,20 @@ export function Banner() {
         </p>
       </TitleWrapper>
       <BenefitsWrapper>
-        <BenefitItem
-          icon="cart"
-          description="Compra simples e segura"
-          bgColor="yellow-dark"
-        />
-        <BenefitItem
-          icon="package"
-          description="Embalagem mantém o café intacto"
-          bgColor="gray"
-        />
-        <BenefitItem
-          icon="timer"
-          description="Entrega rápida e rastreada"
-          bgColor="yellow"
-        />
-        <BenefitItem
-          icon="coffee"
-          description="O café chega fresquinho até você"
-        />
+        <IconContext.Provider
+          value={{ size: 16, weight: 'fill', color: theme.white }}
+        >
+          {benefits.map((benefit) => {
+            return (
+              <BenefitItem key={benefit.description}>
+                <IconWrapper bgColor={benefit.bgColor}>
+                  {benefit.icon}
+                </IconWrapper>
+                <span>{benefit.description}</span>
+              </BenefitItem>
+            )
+          })}
+        </IconContext.Provider>
       </BenefitsWrapper>
       <img src={coffeeBanner} alt="" />
     </BannerContainer>
