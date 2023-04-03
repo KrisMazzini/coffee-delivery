@@ -106,17 +106,6 @@ export const Amount = styled.div`
     text-align: center;
 
     color: ${(props) => props.theme['base-title']};
-
-    &::-webkit-outer-spin-button,
-    &::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-
-    &::-moz-number-spin-box,
-    &::-ms-spin {
-      display: none;
-    }
   }
 
   svg {

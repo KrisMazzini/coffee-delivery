@@ -22,4 +22,17 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Baloo 2', cursive;
         line-height: 130%;
     }
+
+    input {
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        &::-moz-number-spin-box,
+        &::-ms-spin {
+            display: none;
+        }
+    }
 `

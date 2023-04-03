@@ -1,9 +1,10 @@
 import { CheckoutContainer } from './styles'
+import { AddressForm } from './components/AddressForm'
 
 export function Checkout() {
   return (
     <CheckoutContainer>
-      <h1>Checkout</h1>
+      <AddressForm />
     </CheckoutContainer>
   )
 }
