@@ -1,12 +1,5 @@
 import { ReactNode } from 'react'
-import { useTheme } from 'styled-components'
-import {
-  ShoppingCart,
-  Package,
-  Timer,
-  Coffee,
-  IconContext,
-} from 'phosphor-react'
+import { ShoppingCart, Package, Timer, Coffee } from 'phosphor-react'
 
 import coffeeBanner from '../../../../assets/banner-coffee.svg'
 
@@ -14,10 +7,11 @@ import {
   BannerContainer,
   BenefitItem,
   BenefitsWrapper,
-  BgColorType,
-  IconWrapper,
   TitleWrapper,
 } from './styles'
+
+import { IconCircle } from '../../../../components/IconCircle'
+import { BgColorType } from '../../../../components/IconCircle/styles'
 
 interface BenefitType {
   icon: ReactNode
@@ -26,8 +20,6 @@ interface BenefitType {
 }
 
 export function Banner() {
-  const theme = useTheme()
-
   const benefits: BenefitType[] = [
     {
       icon: <ShoppingCart />,
@@ -61,20 +53,14 @@ export function Banner() {
         </p>
       </TitleWrapper>
       <BenefitsWrapper>
-        <IconContext.Provider
-          value={{ size: 16, weight: 'fill', color: theme.white }}
-        >
-          {benefits.map((benefit) => {
-            return (
-              <BenefitItem key={benefit.description}>
-                <IconWrapper bgColor={benefit.bgColor}>
-                  {benefit.icon}
-                </IconWrapper>
-                <span>{benefit.description}</span>
-              </BenefitItem>
-            )
-          })}
-        </IconContext.Provider>
+        {benefits.map((benefit) => {
+          return (
+            <BenefitItem key={benefit.description}>
+              <IconCircle icon={benefit.icon} bgColor={benefit.bgColor} />
+              <span>{benefit.description}</span>
+            </BenefitItem>
+          )
+        })}
       </BenefitsWrapper>
       <img src={coffeeBanner} alt="" />
     </BannerContainer>
