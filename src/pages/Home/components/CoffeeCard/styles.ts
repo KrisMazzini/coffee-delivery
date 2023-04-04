@@ -64,6 +64,7 @@ export const Description = styled.div`
 
 export const AddToCartForm = styled.form`
   width: 100%;
+  height: 3.8rem;
 
   margin-top: auto;
   padding: 0 0.4rem;
@@ -83,40 +84,6 @@ export const PriceTag = styled.span`
   strong {
     font-weight: 800;
     font-size: 2.4rem;
-  }
-`
-
-export const Amount = styled.div`
-  height: 3.8rem;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.4rem;
-
-  padding: 0.8rem;
-  border-radius: 6px;
-
-  background-color: ${(props) => props.theme['base-button']};
-
-  input {
-    all: unset;
-    width: 2rem;
-    background-color: inherit;
-    text-align: center;
-
-    color: ${(props) => props.theme['base-title']};
-  }
-
-  svg {
-    cursor: pointer;
-    color: ${(props) => props.theme.purple};
-
-    transition: all 100ms linear;
-
-    &:hover {
-      color: ${(props) => props.theme['purple-dark']};
-    }
   }
 `
 

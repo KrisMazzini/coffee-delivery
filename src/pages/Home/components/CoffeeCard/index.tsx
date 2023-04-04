@@ -1,4 +1,4 @@
-import { Minus, Plus, IconContext, ShoppingCartSimple } from 'phosphor-react'
+import { ShoppingCartSimple } from 'phosphor-react'
 
 import {
   CoffeeCardContainer,
@@ -8,11 +8,11 @@ import {
   Description,
   AddToCartForm,
   PriceTag,
-  Amount,
   AddToCartButton,
 } from './styles'
 
 import expresso from '../../../../assets/expresso-tradicional.png'
+import { CoffeeAmount } from '../../../../components/CoffeeAmount'
 
 export function CoffeeCard() {
   return (
@@ -33,13 +33,7 @@ export function CoffeeCard() {
         <PriceTag>
           R$ <strong>9,90</strong>
         </PriceTag>
-        <Amount>
-          <IconContext.Provider value={{ size: 14, weight: 'bold' }}>
-            <Minus />
-            <input type="number" min={1} max={9} value={1} disabled />
-            <Plus />
-          </IconContext.Provider>
-        </Amount>
+        <CoffeeAmount />
         <AddToCartButton>
           <ShoppingCartSimple size={22} weight="fill" />
         </AddToCartButton>
