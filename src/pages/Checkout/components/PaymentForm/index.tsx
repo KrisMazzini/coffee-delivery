@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, ReactNode, useState } from 'react'
+import { ReactNode, useState } from 'react'
 import { Bank, CreditCard, CurrencyDollar, Money } from 'phosphor-react'
 import { useTheme } from 'styled-components'
 
@@ -6,8 +6,10 @@ import { PaymentFormContainer } from './styles'
 import { FormCard } from '../FormCard'
 import { RadioBox } from '../../../../components/RadioBox'
 
-interface PaymentOptionType extends InputHTMLAttributes<HTMLInputElement> {
+interface PaymentOptionType {
   icon: ReactNode
+  id: string
+  title: string
 }
 
 export function PaymentForm() {
@@ -48,9 +50,7 @@ export function PaymentForm() {
               name="payment"
               key={option.id}
               checked={option.id === selectedPaymentOptionId}
-              handleSelectOption={() =>
-                setSelectedPaymentOptionId(option.id || null)
-              }
+              handleSelectOption={() => setSelectedPaymentOptionId(option.id)}
             />
           )
         })}
