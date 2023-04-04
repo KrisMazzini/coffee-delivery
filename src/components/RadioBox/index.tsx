@@ -1,5 +1,5 @@
 import { IconContext } from 'phosphor-react'
-import { ChangeEvent, InputHTMLAttributes, ReactNode, useState } from 'react'
+import { InputHTMLAttributes, ReactNode } from 'react'
 import { useTheme } from 'styled-components'
 import {
   UncheckedRadioBoxContainer,
@@ -9,26 +9,25 @@ import {
 
 interface RadioBoxProps extends InputHTMLAttributes<HTMLInputElement> {
   icon: ReactNode
+  handleSelectOption: () => void
 }
 
-export function RadioBox({ icon, id, name, title }: RadioBoxProps) {
-  const [checked, setChecked] = useState(false)
+export function RadioBox({
+  icon,
+  id,
+  name,
+  title,
+  checked,
+  handleSelectOption,
+}: RadioBoxProps) {
   const theme = useTheme()
 
   const RadioBoxContainer = checked
     ? CheckedRadioBoxContainer
     : UncheckedRadioBoxContainer
 
-  function handleChangeCheck(event: ChangeEvent<HTMLInputElement>) {
-    setChecked(event.target.checked)
-  }
-
-  function handleCheckRadio() {
-    setChecked(true)
-  }
-
   return (
-    <RadioBoxContainer onClick={handleCheckRadio}>
+    <RadioBoxContainer onClick={handleSelectOption}>
       <IconContext.Provider value={{ size: 16, color: theme.purple }}>
         <IconWrapper>{icon}</IconWrapper>
       </IconContext.Provider>
@@ -39,7 +38,7 @@ export function RadioBox({ icon, id, name, title }: RadioBoxProps) {
         title={title}
         value={id}
         checked={checked}
-        onChange={handleChangeCheck}
+        onChange={handleSelectOption}
         onClick={(event) => event.stopPropagation()}
         required
       />
