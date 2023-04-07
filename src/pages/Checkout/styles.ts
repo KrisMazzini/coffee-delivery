@@ -5,7 +5,7 @@ export const CheckoutContainer = styled.main`
   grid-template-columns: 1fr 44.8rem;
   gap: 3.2rem;
 
-  padding: 4rem 0;
+  padding-bottom: 4rem;
 `
 
 export const CheckoutSection = styled.section`

@@ -1,14 +1,19 @@
+import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useTheme } from 'styled-components'
 import { ShoppingCart } from 'phosphor-react'
 
 import logo from '../../assets/logo-coffee-delivery.svg'
-import { CartWrapper, HeaderContainer } from './styles'
+import { HeaderContainer, CartWrapper, CartItemsIndicator } from './styles'
 
+import { CartContext } from '../../contexts/CartContext'
 import { CitySelector } from '../CitySelector'
 
 export function Header() {
   const theme = useTheme()
+  const { items } = useContext(CartContext)
+
+  const itemsAmount = items.reduce((total, item) => total + item.amount, 0)
 
   return (
     <HeaderContainer>
@@ -18,6 +23,11 @@ export function Header() {
       <CitySelector />
       <NavLink to="/checkout" title="Checkout">
         <CartWrapper>
+          {itemsAmount > 0 ? (
+            <CartItemsIndicator>{itemsAmount}</CartItemsIndicator>
+          ) : (
+            <></>
+          )}
           <ShoppingCart size={22} weight="fill" color={theme['yellow-dark']} />
         </CartWrapper>
       </NavLink>

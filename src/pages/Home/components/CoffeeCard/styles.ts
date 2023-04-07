@@ -67,7 +67,6 @@ export const AddToCartForm = styled.form`
   height: 3.8rem;
 
   margin-top: auto;
-  padding: 0 0.4rem;
 
   display: flex;
   justify-content: flex-end;

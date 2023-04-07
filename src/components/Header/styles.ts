@@ -24,28 +24,27 @@ export const CartWrapper = styled.div`
   background-color: ${(props) => props.theme['yellow-light']};
 
   position: relative;
+`
 
-  &::after {
-    content: '3';
-    width: 2rem;
-    height: 2rem;
+export const CartItemsIndicator = styled.div`
+  width: 2rem;
+  height: 2rem;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    position: absolute;
-    right: 0;
-    top: 0;
-    transform: translate(50%, -50%);
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translate(50%, -50%);
 
-    border-radius: 50%;
+  border-radius: 50%;
 
-    font-weight: 700;
-    font-size: 1.2rem;
-    letter-spacing: -6%;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: -6%;
 
-    color: ${(props) => props.theme.white};
-    background-color: ${(props) => props.theme['yellow-dark']};
-  }
+  color: ${(props) => props.theme.white};
+  background-color: ${(props) => props.theme['yellow-dark']};
 `

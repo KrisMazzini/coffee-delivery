@@ -1,20 +1,17 @@
+import { useContext } from 'react'
 import { CoffeeListContainer } from './styles'
+
+import { CoffeeListContext } from '../../../../contexts/CoffeeListContext'
 import { CoffeeCard } from '../CoffeeCard'
 
 export function CoffeeList() {
+  const { coffeeList } = useContext(CoffeeListContext)
+
   return (
     <CoffeeListContainer>
-      <CoffeeCard />
-      <CoffeeCard />
-      <CoffeeCard />
-      <CoffeeCard />
-      <CoffeeCard />
-      <CoffeeCard />
-      <CoffeeCard />
-      <CoffeeCard />
-      <CoffeeCard />
-      <CoffeeCard />
-      <CoffeeCard />
+      {coffeeList.map((coffee) => {
+        return <CoffeeCard key={coffee.id} {...coffee} />
+      })}
     </CoffeeListContainer>
   )
 }

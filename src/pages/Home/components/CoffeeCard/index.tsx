@@ -1,3 +1,4 @@
+import { FormEvent, useContext, useState } from 'react'
 import { ShoppingCartSimple } from 'phosphor-react'
 
 import {
@@ -11,30 +12,66 @@ import {
   AddToCartButton,
 } from './styles'
 
-import expresso from '../../../../assets/expresso-tradicional.png'
-import { CoffeeAmount } from '../../../../components/CoffeeAmount'
+import { CoffeeType } from '../../../../contexts/CoffeeListContext'
+import { CartContext } from '../../../../contexts/CartContext'
 
-export function CoffeeCard() {
+import { CoffeeAmount } from '../../../../components/CoffeeAmount'
+import { formatNumberAsCurrency } from '../../../../utils/numberFormatting'
+
+export function CoffeeCard({
+  id,
+  imageUrl,
+  name,
+  description,
+  tags,
+  price,
+}: CoffeeType) {
+  const [amount, setAmount] = useState(0)
+  const { addItemToCart } = useContext(CartContext)
+
+  function addAmount() {
+    setAmount((prevAmount) => prevAmount + 1)
+  }
+
+  function removeAmount() {
+    setAmount((prevAmount) => prevAmount - 1)
+  }
+
+  function handleAddItemToCart(event: FormEvent) {
+    event.preventDefault()
+
+    addItemToCart({
+      id,
+      amount,
+    })
+
+    setAmount(0)
+  }
+
   return (
     <CoffeeCardContainer>
       <CoffeeHeader>
-        <img src={expresso} alt="" />
+        <img src={imageUrl} alt="" />
         <TagList>
-          <Tag>trandicional</Tag>
-          <Tag>com leite</Tag>
-          <Tag>Gelado</Tag>
+          {tags.map((tag) => (
+            <Tag key={tag}>{tag}</Tag>
+          ))}
         </TagList>
       </CoffeeHeader>
       <Description>
-        <h4>Expresso Americano</h4>
-        <p>O tradicional café feito com água quente e grãos moídos</p>
+        <h4>{name}</h4>
+        <p>{description}</p>
       </Description>
-      <AddToCartForm>
+      <AddToCartForm onSubmit={handleAddItemToCart}>
         <PriceTag>
-          R$ <strong>9,90</strong>
+          R$ <strong>{formatNumberAsCurrency(price)}</strong>
         </PriceTag>
-        <CoffeeAmount />
-        <AddToCartButton>
+        <CoffeeAmount
+          amount={amount}
+          addAmount={addAmount}
+          removeAmount={removeAmount}
+        />
+        <AddToCartButton type="submit">
           <ShoppingCartSimple size={22} weight="fill" />
         </AddToCartButton>
       </AddToCartForm>
