@@ -11,6 +11,10 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 62.5%;
     }
 
+    html {
+        background-color: ${(props) => props.theme.background};
+    }
+
     body, p, span, input, button {
         font-family: 'Roboto', sans-serif;
         font-weight: 400;
