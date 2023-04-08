@@ -27,6 +27,10 @@ export const GlobalStyle = createGlobalStyle`
         line-height: 130%;
     }
 
+    a {
+        text-decoration: none;
+    }
+
     input {
         &::-webkit-outer-spin-button,
         &::-webkit-inner-spin-button {

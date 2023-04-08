@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const CoffeeCardContainer = styled.div`
+export const CoffeeCardContainer = styled.li`
   display: grid;
   grid-template-areas: 'image details' 'image controls';
   grid-template-columns: 6.4rem 1fr;

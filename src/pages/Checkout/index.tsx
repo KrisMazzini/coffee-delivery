@@ -1,11 +1,16 @@
+import { useContext } from 'react'
 import { CheckoutContainer, CheckoutSection } from './styles'
 
+import { CartContext } from '../../contexts/CartContext'
 import { AddressForm } from './components/AddressForm'
 import { PaymentForm } from './components/PaymentForm'
 import { SelectedCoffees } from './components/SelectedCoffees'
+import { EmptyCart } from './components/EmptyCart'
 
 export function Checkout() {
-  return (
+  const { items } = useContext(CartContext)
+
+  return items.length > 0 ? (
     <CheckoutContainer>
       <CheckoutSection>
         <h2>Complete seu pedido</h2>
@@ -17,5 +22,7 @@ export function Checkout() {
         <SelectedCoffees />
       </CheckoutSection>
     </CheckoutContainer>
+  ) : (
+    <EmptyCart />
   )
 }

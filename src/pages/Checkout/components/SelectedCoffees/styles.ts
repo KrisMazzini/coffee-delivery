@@ -12,6 +12,28 @@ export const SelectedCoffeesContainer = styled.div`
   background-color: ${(props) => props.theme['base-card']};
 `
 
+export const CoffeeList = styled.ul`
+  max-height: 31.5rem;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: inherit;
+  gap: inherit;
+
+  position: relative;
+
+  &::-webkit-scrollbar {
+    position: absolute;
+    width: 2rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${(props) => props.theme.purple};
+    border-left: 0.9rem solid ${(props) => props.theme['base-card']};
+    border-right: 0.9rem solid ${(props) => props.theme['base-card']};
+  }
+`
+
 export const Summary = styled.div`
   display: flex;
   flex-direction: column;

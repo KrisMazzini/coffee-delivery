@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 
 import {
+  CoffeeList,
   ConfirmOrderButton,
   PriceSummary,
   SelectedCoffeesContainer,
@@ -39,13 +40,15 @@ export function SelectedCoffees() {
 
   return (
     <SelectedCoffeesContainer>
-      {selectedCoffees.map((coffee) => {
-        if (coffee) {
-          return <CoffeeCard {...coffee} key={coffee.id} />
-        }
+      <CoffeeList>
+        {selectedCoffees.map((coffee) => {
+          if (coffee) {
+            return <CoffeeCard {...coffee} key={coffee.id} />
+          }
 
-        return <></>
-      })}
+          return <></>
+        })}
+      </CoffeeList>
       <Summary>
         <PriceSummary>
           <span>Total de itens</span>
