@@ -36,7 +36,9 @@ export function Header() {
       <NavLink to="/checkout" title="Checkout">
         <CartWrapper>
           {itemsAmount > 0 ? (
-            <CartItemsIndicator>{itemsAmount}</CartItemsIndicator>
+            <CartItemsIndicator>
+              {itemsAmount < 100 ? itemsAmount : '99+'}
+            </CartItemsIndicator>
           ) : (
             <></>
           )}

@@ -1,42 +1,28 @@
 import { Minus, Plus, IconContext } from 'phosphor-react'
+
 import { CoffeeAmountContainer } from './styles'
 
 interface CoffeeAmountProps {
   amount: number
-  addAmount: () => void
-  removeAmount: () => void
+  handleIncreaseAmount: () => void
+  handleDecreaseAmount: () => void
 }
 
 export function CoffeeAmount({
   amount,
-  addAmount,
-  removeAmount,
+  handleIncreaseAmount,
+  handleDecreaseAmount,
 }: CoffeeAmountProps) {
-  const minAmount = 0
-  const maxAmount = 99
-
-  function handleRemoveAmount() {
-    if (amount > minAmount) {
-      removeAmount()
-    }
-  }
-
-  function handleAddAmount() {
-    if (amount < maxAmount) {
-      addAmount()
-    }
-  }
-
   return (
     <CoffeeAmountContainer>
       <IconContext.Provider value={{ size: 14, weight: 'bold' }}>
         <Minus
-          onClick={handleRemoveAmount}
+          onClick={handleDecreaseAmount}
           onMouseDown={(ev) => ev.preventDefault()}
         />
-        <input type="number" min={0} max={99} value={amount} disabled />
+        <input type="number" min={0} value={amount} disabled />
         <Plus
-          onClick={handleAddAmount}
+          onClick={handleIncreaseAmount}
           onMouseDown={(ev) => ev.preventDefault()}
         />
       </IconContext.Provider>

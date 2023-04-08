@@ -99,13 +99,18 @@ export const AddToCartButton = styled.button`
   background-color: ${(props) => props.theme['purple-dark']};
 
   cursor: pointer;
-  transition: all 100ms linear;
+  transition: all 150ms linear;
 
   svg {
     color: ${(props) => props.theme.white};
   }
 
-  &:hover {
+  &:disabled {
+    background-color: ${(props) => props.theme['purple-light']};
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
     background-color: ${(props) => props.theme.purple};
   }
 `

@@ -44,8 +44,8 @@ export function CoffeeCard({
       <Controls>
         <CoffeeAmount
           amount={amount}
-          addAmount={increaseAmount}
-          removeAmount={decreaseAmount}
+          handleIncreaseAmount={increaseAmount}
+          handleDecreaseAmount={decreaseAmount}
         />
         <RemoveButton type="button" onClick={removeItem}>
           <Trash size={16} />

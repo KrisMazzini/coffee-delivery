@@ -29,12 +29,14 @@ export function CoffeeCard({
   const [amount, setAmount] = useState(0)
   const { addItemToCart } = useContext(CartContext)
 
-  function addAmount() {
+  function increaseAmount() {
     setAmount((prevAmount) => prevAmount + 1)
   }
 
-  function removeAmount() {
-    setAmount((prevAmount) => prevAmount - 1)
+  function decreaseAmount() {
+    if (amount > 0) {
+      setAmount((prevAmount) => prevAmount - 1)
+    }
   }
 
   function handleAddItemToCart(event: FormEvent) {
@@ -68,10 +70,10 @@ export function CoffeeCard({
         </PriceTag>
         <CoffeeAmount
           amount={amount}
-          addAmount={addAmount}
-          removeAmount={removeAmount}
+          handleIncreaseAmount={increaseAmount}
+          handleDecreaseAmount={decreaseAmount}
         />
-        <AddToCartButton type="submit">
+        <AddToCartButton type="submit" disabled={amount < 1}>
           <ShoppingCartSimple size={22} weight="fill" />
         </AddToCartButton>
       </AddToCartForm>

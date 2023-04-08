@@ -41,9 +41,10 @@ export function cartReducer(state: CartState, action: any) {
     }
     case CartActionTypes.DECREASE_CART_ITEM_AMOUNT: {
       const itemIndex = findItemIndexById(action.payload.itemId)
+      const itemAmount = state.items[itemIndex].amount
 
       return produce(state, (draft) => {
-        if (itemIndex >= 0) {
+        if (itemIndex >= 0 && itemAmount > 1) {
           draft.items[itemIndex].amount--
         }
       })
