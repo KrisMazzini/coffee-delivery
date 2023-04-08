@@ -4,6 +4,7 @@ export const EmptyCartContainer = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
+  z-index: 2;
 
   transform: translate(-50%, -50%);
 

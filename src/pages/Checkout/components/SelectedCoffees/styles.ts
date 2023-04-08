@@ -20,10 +20,7 @@ export const CoffeeList = styled.ul`
   flex-direction: inherit;
   gap: inherit;
 
-  position: relative;
-
   &::-webkit-scrollbar {
-    position: absolute;
     width: 2rem;
   }
 
