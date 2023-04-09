@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const SelectedCoffeesContainer = styled.div`
-  width: 44.8rem;
   padding: 4rem;
   border-radius: 6px 44px;
 
@@ -10,24 +9,30 @@ export const SelectedCoffeesContainer = styled.div`
   gap: 2.4rem;
 
   background-color: ${(props) => props.theme['base-card']};
+
+  @media (min-width: 1440px) {
+    width: 44.8rem;
+  }
 `
 
 export const CoffeeList = styled.ul`
-  max-height: 31.5rem;
-  overflow-y: auto;
-
   display: flex;
   flex-direction: inherit;
   gap: inherit;
 
-  &::-webkit-scrollbar {
-    width: 2rem;
-  }
+  @media (min-width: 1440px) {
+    overflow-y: auto;
+    max-height: 31.5rem;
 
-  &::-webkit-scrollbar-thumb {
-    background: ${(props) => props.theme.purple};
-    border-left: 0.9rem solid ${(props) => props.theme['base-card']};
-    border-right: 0.9rem solid ${(props) => props.theme['base-card']};
+    &::-webkit-scrollbar {
+      width: 2rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: ${(props) => props.theme.purple};
+      border-left: 0.9rem solid ${(props) => props.theme['base-card']};
+      border-right: 0.9rem solid ${(props) => props.theme['base-card']};
+    }
   }
 `
 

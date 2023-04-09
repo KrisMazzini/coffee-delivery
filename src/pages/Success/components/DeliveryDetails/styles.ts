@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const DeliveryDetailsContainer = styled.div`
-  width: 52.6rem;
+  width: 100%;
 
   padding: 0.1rem;
   border-radius: 6px 36px;
@@ -17,6 +17,10 @@ export const DeliveryDetailsContainer = styled.div`
     gap: 3.2rem;
 
     background-color: ${(props) => props.theme.white};
+  }
+
+  @media (min-width: 1144px) {
+    width: 52.6rem;
   }
 `
 

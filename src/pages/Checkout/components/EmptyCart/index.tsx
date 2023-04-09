@@ -9,13 +9,13 @@ export function EmptyCart() {
 
   return (
     <EmptyCartContainer>
-      <ShoppingCart size={256} color={theme.purple} />
+      <ShoppingCart color={theme.purple} />
       <p>
         <strong>Seu carrinho está vazio!</strong> <br /> Selecione seus cafés
         preferidos para prosseguir com seu pedido!
       </p>
       <NavLink to="/">
-        Voltar <CaretCircleLeft size={32} color={theme.white} />
+        Voltar <CaretCircleLeft color={theme.white} />
       </NavLink>
     </EmptyCartContainer>
   )

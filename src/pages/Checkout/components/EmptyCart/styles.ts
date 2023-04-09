@@ -1,13 +1,6 @@
 import styled from 'styled-components'
 
 export const EmptyCartContainer = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  z-index: 2;
-
-  transform: translate(-50%, -50%);
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,44 +8,71 @@ export const EmptyCartContainer = styled.div`
 
   color: ${(props) => props.theme['base-text']};
 
+  transition: all 150ms ease-in-out;
+
+  * {
+    transition: inherit;
+  }
+
+  > svg {
+    width: 12.8rem;
+    height: 12.8rem;
+  }
+
   p {
-    font-size: 2.4rem;
     text-align: center;
 
     strong {
-      font-size: 3.6rem;
+      font-size: 2.4rem;
       font-weight: 700;
     }
   }
 
   a {
-    padding: 0.8rem 6.4rem;
+    padding: 0.8rem 3.2rem;
     border-radius: 6px;
 
     display: flex;
     align-items: center;
     gap: 0.8rem;
 
-    font-size: 2.4rem;
-
     color: ${(props) => props.theme.white};
     background-color: ${(props) => props.theme.purple};
 
     transition: all 150ms ease-in-out;
 
+    svg {
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+
     &:hover {
       background-color: ${(props) => props.theme['purple-dark']};
     }
   }
-`
 
-export const IconWrapper = styled.div`
-  padding: 5rem;
-  border-radius: 50%;
+  @media (min-width: 768px) {
+    > svg {
+      width: 25.6rem;
+      height: 25.6rem;
+    }
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    p {
+      font-size: 2.4rem;
 
-  background-color: ${(props) => props.theme['purple-light']};
+      strong {
+        font-size: 3.6rem;
+      }
+    }
+
+    a {
+      padding: 0.8rem 6.4rem;
+      font-size: 2.4rem;
+
+      svg {
+        width: 3.2rem;
+        height: 3.2rem;
+      }
+    }
+  }
 `

@@ -5,6 +5,12 @@ interface HeaderContainerProps {
 }
 
 export const HeaderContainer = styled.header<HeaderContainerProps>`
+  min-width: 36rem;
+  padding: 1.6rem 4rem;
+  box-shadow: none;
+
+  overflow: auto;
+
   position: fixed;
   top: 0;
   left: 0;
@@ -16,10 +22,6 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
   align-items: center;
   gap: 1.3rem;
 
-  padding: 3.2rem 16rem;
-  box-shadow: none;
-  transition: box-shadow 300ms linear;
-
   background-color: ${(props) => `${props.theme.background}F5`};
   ${(props) =>
     props.pageScrolled
@@ -28,8 +30,34 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
         `
       : ''}
 
+  transition: box-shadow 300ms linear, padding 300ms linear;
+
   > *:first-child {
     margin-right: auto;
+  }
+
+  @media (min-width: 768px) {
+    padding: 3.2rem 8rem;
+  }
+
+  @media (min-width: 1440px) {
+    padding: 3.2rem 16rem;
+  }
+
+  @media (min-width: 1472px) {
+    padding: 3.2rem calc(50vw - 72rem);
+  }
+`
+
+export const LogoWrapper = styled.div`
+  height: 4rem;
+  max-width: 2.5rem;
+  overflow: hidden;
+
+  transition: all 300ms linear;
+
+  @media (min-width: 440px) {
+    max-width: 8.5rem;
   }
 `
 

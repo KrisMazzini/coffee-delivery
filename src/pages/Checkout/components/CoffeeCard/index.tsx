@@ -49,7 +49,7 @@ export function CoffeeCard({
         />
         <RemoveButton type="button" onClick={removeItem}>
           <Trash size={16} />
-          Remover
+          <span>Remover</span>
         </RemoveButton>
       </Controls>
     </CoffeeCardContainer>

@@ -4,7 +4,12 @@ import { useTheme } from 'styled-components'
 import { ShoppingCart } from 'phosphor-react'
 
 import logo from '../../assets/logo-coffee-delivery.svg'
-import { HeaderContainer, CartWrapper, CartItemsIndicator } from './styles'
+import {
+  HeaderContainer,
+  CartWrapper,
+  CartItemsIndicator,
+  LogoWrapper,
+} from './styles'
 
 import { CartContext } from '../../contexts/CartContext'
 import { CitySelector } from '../CitySelector'
@@ -30,7 +35,9 @@ export function Header() {
   return (
     <HeaderContainer pageScrolled={pageScrolled}>
       <NavLink to="/" title="Home" end>
-        <img src={logo} alt="" />
+        <LogoWrapper>
+          <img src={logo} alt="" />
+        </LogoWrapper>
       </NavLink>
       <CitySelector />
       <NavLink to="/checkout" title="Checkout">

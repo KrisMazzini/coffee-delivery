@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 
-export const HomeContainer = styled.main``
+export const HomeContainer = styled.main`
+  max-width: 144rem;
+  margin: 0 auto;
+`
 
 export const Coffees = styled.section`
   max-width: 144rem;

@@ -21,8 +21,10 @@ export const Details = styled.div`
   grid-area: details;
 
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: 0.4rem 1.6rem;
 
   span:first-child {
     color: ${(props) => props.theme['base-subtitle']};
@@ -74,6 +76,13 @@ export const RemoveButton = styled.button`
 
     svg {
       color: ${(props) => props.theme['purple-dark']};
+    }
+  }
+
+  @media (max-width: 440px) {
+    width: 3.2rem;
+    span {
+      display: none;
     }
   }
 `

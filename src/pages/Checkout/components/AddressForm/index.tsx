@@ -24,7 +24,7 @@ export function AddressForm() {
             id="street"
             name="street"
             placeholder="rua"
-            containerSize="lg"
+            containerSize="md"
             fill
             required
           />
