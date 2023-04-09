@@ -1,5 +1,4 @@
 import { createContext, ReactNode } from 'react'
-import { v4 as uuid } from 'uuid'
 
 import expresso from '../assets/coffees/expresso-tradicional.png'
 import americanExpresso from '../assets/coffees/expresso-americano.png'
@@ -41,7 +40,7 @@ export function CoffeeListContextProvider({
 }: CoffeeListProviderProps) {
   const coffeeList: CoffeeType[] = [
     {
-      id: uuid(),
+      id: 'expresso-tradicional',
       imageUrl: expresso,
       name: 'Expresso Tradicional',
       description: 'O tradicional café feito com água quente e grãos moídos',
@@ -49,7 +48,7 @@ export function CoffeeListContextProvider({
       price: 9.9,
     },
     {
-      id: uuid(),
+      id: 'expresso-americano',
       imageUrl: americanExpresso,
       name: 'Expresso Americano',
       description: 'Expresso diluído, menos intenso que o tradicional',
@@ -57,7 +56,7 @@ export function CoffeeListContextProvider({
       price: 9.9,
     },
     {
-      id: uuid(),
+      id: 'expresso-cremoso',
       imageUrl: creamyExpresso,
       name: 'Expresso Cremoso',
       description: 'Café expresso tradicional com espuma cremosa',
@@ -65,7 +64,7 @@ export function CoffeeListContextProvider({
       price: 11.9,
     },
     {
-      id: uuid(),
+      id: 'expresso-gelado',
       imageUrl: icedExpresso,
       name: 'Expresso Gelado',
       description: 'Bebida preparada com café expresso e cubos de gelo',
@@ -73,7 +72,7 @@ export function CoffeeListContextProvider({
       price: 11.9,
     },
     {
-      id: uuid(),
+      id: 'cafe-com-leite',
       imageUrl: coffeeWithCream,
       name: 'Café com Leite',
       description: 'Meio a meio de expresso tradicional com leite vaporizado',
@@ -81,7 +80,7 @@ export function CoffeeListContextProvider({
       price: 10.9,
     },
     {
-      id: uuid(),
+      id: 'latte',
       imageUrl: latte,
       name: 'Latte',
       description:
@@ -90,7 +89,7 @@ export function CoffeeListContextProvider({
       price: 13.9,
     },
     {
-      id: uuid(),
+      id: 'capuccino',
       imageUrl: capuccino,
       name: 'Capuccino',
       description:
@@ -99,7 +98,7 @@ export function CoffeeListContextProvider({
       price: 13.9,
     },
     {
-      id: uuid(),
+      id: 'macchiato',
       imageUrl: macchiato,
       name: 'Macchiato',
       description:
@@ -108,7 +107,7 @@ export function CoffeeListContextProvider({
       price: 13.9,
     },
     {
-      id: uuid(),
+      id: 'mocaccino',
       imageUrl: mocaccino,
       name: 'Mocaccino',
       description: 'Café expresso com calda de chocolate, pouco leite e espuma',
@@ -116,7 +115,7 @@ export function CoffeeListContextProvider({
       price: 14.9,
     },
     {
-      id: uuid(),
+      id: 'chocolate-quente',
       imageUrl: hotChocolate,
       name: 'Chocolate Quente',
       description:
@@ -125,7 +124,7 @@ export function CoffeeListContextProvider({
       price: 14.9,
     },
     {
-      id: uuid(),
+      id: 'cubano',
       imageUrl: cuban,
       name: 'Cubano',
       description:
@@ -134,7 +133,7 @@ export function CoffeeListContextProvider({
       price: 18.9,
     },
     {
-      id: uuid(),
+      id: 'havaiano',
       imageUrl: hawaiian,
       name: 'Havaiano',
       description: 'Bebida adocicada preparada com café e leite de coco',
@@ -142,7 +141,7 @@ export function CoffeeListContextProvider({
       price: 13.9,
     },
     {
-      id: uuid(),
+      id: 'arabe',
       imageUrl: arab,
       name: 'Árabe',
       description: 'Bebida preparada com grãos de café árabe e especiarias',
@@ -150,7 +149,7 @@ export function CoffeeListContextProvider({
       price: 16.9,
     },
     {
-      id: uuid(),
+      id: 'irlandes',
       imageUrl: irish,
       name: 'Irlandês',
       description: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',
