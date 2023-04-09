@@ -1,15 +1,21 @@
 import styled from 'styled-components'
 
-const BaseRadioBoxContainer = styled.div`
+const BaseRadioBoxContainer = styled.label`
   padding: 1.6rem;
+  border: 1px solid ${(props) => props.theme['base-button']};
   border-radius: 6px;
 
   display: flex;
   align-items: center;
   gap: 1.2rem;
 
+  font-size: 1.2rem;
+  line-height: 160%;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  color: ${(props) => props.theme['base-subtitle']};
   background-color: ${(props) => props.theme['base-button']};
-  border: 1px solid ${(props) => props.theme['base-button']};
 
   cursor: pointer;
   transition: all 150ms linear;
@@ -20,11 +26,9 @@ const BaseRadioBoxContainer = styled.div`
     cursor: pointer;
   }
 
-  label {
-    font-size: 1.2rem;
-    line-height: 160%;
-    text-transform: uppercase;
-    color: ${(props) => props.theme['base-subtitle']};
+  svg {
+    width: 1.6rem;
+    height: 1.6rem;
   }
 `
 
@@ -40,18 +44,6 @@ export const CheckedRadioBoxContainer = styled(BaseRadioBoxContainer)`
   border-color: ${(props) => props.theme.purple};
 `
 
-export const IconWrapper = styled.div`
-  width: 1.6rem;
-  height: 1.6rem;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-color: inherit;
-
-  position: absolute;
-  top: 50%;
-  left: 1.6rem;
-  transform: translateY(-50%);
+export const Input = styled.input`
+  display: none;
 `

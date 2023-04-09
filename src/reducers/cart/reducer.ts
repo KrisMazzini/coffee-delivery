@@ -9,6 +9,7 @@ export interface CartItemType {
 
 interface CartState {
   items: CartItemType[]
+  deliveryCost: number
 }
 
 export function cartReducer(state: CartState, action: any) {

@@ -1,14 +1,16 @@
 import styled from 'styled-components'
 
 export const CheckoutContainer = styled.main`
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3.2rem;
+  form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.2rem;
 
-  padding-bottom: 4rem;
+    padding-bottom: 4rem;
 
-  @media (min-width: 1440px) {
-    grid-template-columns: 1fr 44.8rem;
+    @media (min-width: 1440px) {
+      grid-template-columns: 1fr 44.8rem;
+    }
   }
 `
 

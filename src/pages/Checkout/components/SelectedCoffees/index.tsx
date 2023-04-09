@@ -65,7 +65,7 @@ export function SelectedCoffees() {
           </span>
         </TotalSummary>
       </Summary>
-      <ConfirmOrderButton>Confirmar Pedido</ConfirmOrderButton>
+      <ConfirmOrderButton type="submit">Confirmar Pedido</ConfirmOrderButton>
     </SelectedCoffeesContainer>
   )
 }

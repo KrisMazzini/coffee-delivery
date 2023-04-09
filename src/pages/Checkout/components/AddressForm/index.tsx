@@ -8,7 +8,9 @@ import { Input } from '../../../../components/Input'
 
 export function AddressForm() {
   const theme = useTheme()
+
   const icon = <MapPinLine size={22} color={theme['yellow-dark']} />
+
   return (
     <FormCard
       icon={icon}
@@ -17,7 +19,14 @@ export function AddressForm() {
     >
       <AddressFormContainer>
         <AddressRow>
-          <Input id="zipCode" name="zipCode" placeholder="CEP" required />
+          <Input
+            id="zipCode"
+            name="zipCode"
+            placeholder="CEP"
+            minLength={8}
+            maxLength={8}
+            required
+          />
         </AddressRow>
         <AddressRow>
           <Input
@@ -33,7 +42,6 @@ export function AddressForm() {
           <Input
             id="number"
             name="number"
-            type="number"
             placeholder="número"
             min={0}
             required

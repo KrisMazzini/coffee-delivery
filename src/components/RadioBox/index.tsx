@@ -1,50 +1,48 @@
-import { IconContext } from 'phosphor-react'
+import { useFormContext } from 'react-hook-form'
 import { InputHTMLAttributes, ReactNode } from 'react'
 import { useTheme } from 'styled-components'
+import { IconContext } from 'phosphor-react'
+
 import {
   UncheckedRadioBoxContainer,
   CheckedRadioBoxContainer,
-  IconWrapper,
+  Input,
 } from './styles'
 
 interface RadioBoxProps extends InputHTMLAttributes<HTMLInputElement> {
   icon: ReactNode
+  name: string
   handleSelectOption: () => void
 }
 
-export function RadioBox({
-  icon,
-  id,
-  name,
-  title,
-  checked,
-  handleSelectOption,
-}: RadioBoxProps) {
+export function RadioBox({ icon, id, name, title }: RadioBoxProps) {
   const theme = useTheme()
+  const { register, watch } = useFormContext()
 
-  const RadioBoxContainer = checked
-    ? CheckedRadioBoxContainer
-    : UncheckedRadioBoxContainer
+  const selectedPaymentOption = watch('payment')
+
+  const RadioBoxContainer =
+    selectedPaymentOption === id
+      ? CheckedRadioBoxContainer
+      : UncheckedRadioBoxContainer
 
   return (
-    <RadioBoxContainer onClick={handleSelectOption}>
-      <IconContext.Provider value={{ size: 16, color: theme.purple }}>
-        <IconWrapper>{icon}</IconWrapper>
-      </IconContext.Provider>
-      <input
+    <>
+      <Input
         type="radio"
         id={id}
-        name={name}
         title={title}
         value={id}
-        checked={checked}
-        onChange={handleSelectOption}
         onClick={(event) => event.stopPropagation()}
         required
+        {...register(name)}
       />
-      <label htmlFor={id} onClick={(event) => event.stopPropagation()}>
+      <RadioBoxContainer htmlFor={id}>
+        <IconContext.Provider value={{ size: 16, color: theme.purple }}>
+          {icon}
+        </IconContext.Provider>
         {title}
-      </label>
-    </RadioBoxContainer>
+      </RadioBoxContainer>
+    </>
   )
 }

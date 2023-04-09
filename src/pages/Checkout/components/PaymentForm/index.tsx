@@ -2,9 +2,11 @@ import { ReactNode, useState } from 'react'
 import { Bank, CreditCard, CurrencyDollar, Money } from 'phosphor-react'
 import { useTheme } from 'styled-components'
 
-import { PaymentFormContainer } from './styles'
+import { ErrorText, PaymentFormContainer } from './styles'
+
 import { FormCard } from '../FormCard'
 import { RadioBox } from '../../../../components/RadioBox'
+import { ErrorMessage } from '@hookform/error-message'
 
 interface PaymentOptionType {
   icon: ReactNode
@@ -55,6 +57,7 @@ export function PaymentForm() {
           )
         })}
       </PaymentFormContainer>
+      <ErrorMessage name="payment" as={<ErrorText />} />
     </FormCard>
   )
 }

@@ -15,5 +15,6 @@ export const defaultTheme = {
   'yellow-light': '#F1E9C9',
   yellow: '#DBAC2C',
   'yellow-dark': '#C47F17',
+  warning: '#ED3A5A',
   white: '#FFFFFF',
 }

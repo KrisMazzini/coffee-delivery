@@ -27,10 +27,11 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     cartReducer,
     {
       items: [],
+      deliveryCost: 0,
     },
     (initialState) => {
       const storedCartStateAsJSON = localStorage.getItem(
-        '@coffee-delivery:cart-state:1.0.0',
+        '@coffee-delivery:cart-state:2.0.0',
       )
 
       if (storedCartStateAsJSON) {
@@ -61,7 +62,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 
   useEffect(() => {
     const cartStateJSON = JSON.stringify(cartState)
-    localStorage.setItem('@coffee-delivery:cart-state:1.0.0', cartStateJSON)
+    localStorage.setItem('@coffee-delivery:cart-state:2.0.0', cartStateJSON)
   }, [cartState])
 
   return (
