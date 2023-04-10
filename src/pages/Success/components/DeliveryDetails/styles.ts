@@ -1,4 +1,10 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const rotateOpen = keyframes`
+  0% {
+    transform: rotateX(90deg);
+  }
+`
 
 export const DeliveryDetailsContainer = styled.div`
   width: 100%;
@@ -18,6 +24,9 @@ export const DeliveryDetailsContainer = styled.div`
 
     background-color: ${(props) => props.theme.white};
   }
+
+  animation: ${rotateOpen} 600ms ease-in-out both;
+  animation-delay: 700ms;
 
   @media (min-width: 1144px) {
     width: 52.6rem;
