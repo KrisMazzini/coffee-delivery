@@ -7,6 +7,10 @@ export const LayoutContainer = styled.div`
 
   transition: padding 300ms linear;
 
+  @media (min-width: 360px) {
+    overflow: hidden;
+  }
+
   @media (min-width: 768px) {
     padding: 10.93rem 8rem;
   }

@@ -17,8 +17,8 @@ export const BannerContainer = styled.header`
   ::before {
     content: '';
     height: 100%;
-    width: 100vw;
     left: calc(-50vw + 50%);
+    right: calc(-50vw + 50%);
 
     position: absolute;
     z-index: -1;
