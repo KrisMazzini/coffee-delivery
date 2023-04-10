@@ -5,15 +5,23 @@ import {
   increaseCartItemAmountAction,
   decreaseCartItemAmountAction,
   removeCartItemAction,
+  completeOrderAction,
 } from '../reducers/cart/actions'
-import { CartItemType, cartReducer } from '../reducers/cart/reducer'
+import {
+  CartItemType,
+  cartReducer,
+  DeliveryDataType,
+} from '../reducers/cart/reducer'
 
 interface CartContextType {
   items: CartItemType[]
+  deliveryCost: number
+  deliveryData: DeliveryDataType | null
   addItemToCart: (item: CartItemType) => void
   increaseCartItemAmount: (itemId: string) => void
   decreaseCartItemAmount: (itemId: string) => void
   removeCartItem: (itemId: string) => void
+  completeOrder: (deliveryData: DeliveryDataType) => void
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -27,11 +35,12 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     cartReducer,
     {
       items: [],
-      deliveryCost: 0,
+      deliveryCost: 3.5,
+      deliveryData: null,
     },
     (initialState) => {
       const storedCartStateAsJSON = localStorage.getItem(
-        '@coffee-delivery:cart-state:2.0.0',
+        '@coffee-delivery:cart-state:2.1.0',
       )
 
       if (storedCartStateAsJSON) {
@@ -42,7 +51,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     },
   )
 
-  const { items } = cartState
+  const { items, deliveryCost, deliveryData } = cartState
 
   function addItemToCart(item: CartItemType) {
     dispatch(addItemToCartAction(item))
@@ -60,19 +69,26 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     dispatch(removeCartItemAction(itemId))
   }
 
+  function completeOrder(deliveryData: DeliveryDataType) {
+    dispatch(completeOrderAction(deliveryData))
+  }
+
   useEffect(() => {
     const cartStateJSON = JSON.stringify(cartState)
-    localStorage.setItem('@coffee-delivery:cart-state:2.0.0', cartStateJSON)
+    localStorage.setItem('@coffee-delivery:cart-state:2.1.0', cartStateJSON)
   }, [cartState])
 
   return (
     <CartContext.Provider
       value={{
         items,
+        deliveryCost,
+        deliveryData,
         addItemToCart,
         increaseCartItemAmount,
         decreaseCartItemAmount,
         removeCartItem,
+        completeOrder,
       }}
     >
       {children}

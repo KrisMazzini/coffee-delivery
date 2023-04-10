@@ -1,10 +1,11 @@
-import { CartItemType } from './reducer'
+import { CartItemType, DeliveryDataType } from './reducer'
 
 export const CartActionTypes = {
   ADD_ITEM_TO_CART: 'ADD_COFFEE_TO_CART',
   INCREASE_CART_ITEM_AMOUNT: 'INCREASE_CART_ITEM_AMOUNT',
   DECREASE_CART_ITEM_AMOUNT: 'DECREASE_CART_ITEM_AMOUNT',
   REMOVE_CART_ITEM: 'REMOVE_CART_ITEM',
+  COMPLETE_ORDER: 'COMPLETE_ORDER',
 }
 
 export function addItemToCartAction(item: CartItemType) {
@@ -39,6 +40,15 @@ export function removeCartItemAction(itemId: string) {
     type: CartActionTypes.REMOVE_CART_ITEM,
     payload: {
       itemId,
+    },
+  }
+}
+
+export function completeOrderAction(deliveryData: DeliveryDataType) {
+  return {
+    type: CartActionTypes.COMPLETE_ORDER,
+    payload: {
+      deliveryData,
     },
   }
 }

@@ -1,17 +1,33 @@
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
-import { IconCircle } from '../../../../components/IconCircle'
 import { DeliveryDetailsContainer, Detail } from './styles'
 
-export function DeliveryDetails() {
+import { IconCircle } from '../../../../components/IconCircle'
+import { AddressType } from '../../../../reducers/cart/reducer'
+
+interface DeliveryDetailsProps extends AddressType {
+  paymentMethod: string
+}
+
+export function DeliveryDetails({
+  street,
+  number,
+  district,
+  city,
+  state,
+  paymentMethod,
+}: DeliveryDetailsProps) {
   return (
     <DeliveryDetailsContainer>
       <ul>
         <Detail>
           <IconCircle icon={<MapPin />} />
           <span>
-            Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+            Entrega em{' '}
+            <strong>
+              {street}, {number}
+            </strong>
             <br />
-            Farrapos - Porto Alegre, RS
+            {district} - {city}, {state}
           </span>
         </Detail>
         <Detail>
@@ -27,7 +43,7 @@ export function DeliveryDetails() {
           <span>
             Pagamento na entrega
             <br />
-            <strong>Cartão de Crédito</strong>
+            <strong>{paymentMethod}</strong>
           </span>
         </Detail>
       </ul>

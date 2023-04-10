@@ -1,11 +1,15 @@
 import { useContext } from 'react'
+import { addMinutes } from 'date-fns'
+import { useNavigate } from 'react-router-dom'
 import { useForm, FormProvider } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
 
 import { CheckoutContainer, CheckoutSection } from './styles'
 
+import { CartState } from '../../reducers/cart/reducer'
 import { CartContext } from '../../contexts/CartContext'
+
 import { AddressForm } from './components/AddressForm'
 import { PaymentForm } from './components/PaymentForm'
 import { SelectedCoffees } from './components/SelectedCoffees'
@@ -38,11 +42,14 @@ const checkoutFormValidationSchema = zod.object({
 type CheckoutFormDataType = zod.infer<typeof checkoutFormValidationSchema>
 
 export function Checkout() {
-  const { items } = useContext(CartContext)
+  const navigate = useNavigate()
+  const { items, completeOrder } = useContext(CartContext)
+
+  const storedCheckoutFormValues = retriveCheckoutFormValuesFromLocalStorage()
 
   const checkoutForm = useForm<CheckoutFormDataType>({
     resolver: zodResolver(checkoutFormValidationSchema),
-    defaultValues: {
+    defaultValues: storedCheckoutFormValues || {
       zipCode: '',
       street: '',
       number: '',
@@ -56,8 +63,37 @@ export function Checkout() {
 
   const { handleSubmit } = checkoutForm
 
-  function handleCheckout(data: CheckoutFormDataType) {
-    console.log(data)
+  function retriveCheckoutFormValuesFromLocalStorage() {
+    const storedCartStateAsJSON = localStorage.getItem(
+      '@coffee-delivery:cart-state:2.1.0',
+    )
+
+    if (!storedCartStateAsJSON) {
+      return null
+    }
+
+    const storedCartState = JSON.parse(storedCartStateAsJSON) as CartState
+
+    if (!storedCartState.deliveryData) {
+      return null
+    }
+
+    return {
+      ...storedCartState.deliveryData.address,
+      payment: storedCartState.deliveryData.paymentMethod,
+    }
+  }
+
+  function handleCheckout(checkoutData: CheckoutFormDataType) {
+    const { payment, ...address } = checkoutData
+    completeOrder({
+      address,
+      paymentMethod: payment,
+      orderTime: new Date(),
+      deliveryTime: addMinutes(new Date(), 30),
+    })
+
+    navigate('/success')
     checkoutForm.reset()
   }
 

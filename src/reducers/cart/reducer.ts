@@ -7,9 +7,27 @@ export interface CartItemType {
   amount: number
 }
 
-interface CartState {
+export interface AddressType {
+  zipCode: string
+  street: string
+  number: string
+  complement?: string
+  district: string
+  city: string
+  state: string
+}
+
+export interface DeliveryDataType {
+  address: AddressType
+  paymentMethod: string
+  orderTime: Date
+  deliveryTime: Date
+}
+
+export interface CartState {
   items: CartItemType[]
   deliveryCost: number
+  deliveryData: DeliveryDataType | null
 }
 
 export function cartReducer(state: CartState, action: any) {
@@ -58,6 +76,13 @@ export function cartReducer(state: CartState, action: any) {
           draft.items.splice(itemIndex, 1)
         }
       })
+    }
+    case CartActionTypes.COMPLETE_ORDER: {
+      return {
+        ...state,
+        items: [],
+        deliveryData: action.payload.deliveryData,
+      }
     }
   }
 

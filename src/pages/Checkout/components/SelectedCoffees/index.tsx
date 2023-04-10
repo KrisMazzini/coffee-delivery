@@ -15,7 +15,7 @@ import { CartContext } from '../../../../contexts/CartContext'
 import { CoffeeCard } from '../CoffeeCard'
 
 export function SelectedCoffees() {
-  const { items } = useContext(CartContext)
+  const { items, deliveryCost } = useContext(CartContext)
   const { getCoffeeDataById } = useContext(CoffeeListContext)
 
   const selectedCoffees = items.map((item) => {
@@ -36,8 +36,6 @@ export function SelectedCoffees() {
     return price
   }, 0)
 
-  const deliveryPrice = 3.5
-
   return (
     <SelectedCoffeesContainer>
       <CoffeeList>
@@ -56,12 +54,12 @@ export function SelectedCoffees() {
         </PriceSummary>
         <PriceSummary>
           <span>Entrega</span>
-          <span>R$ {formatNumberAsCurrency(deliveryPrice)}</span>
+          <span>R$ {formatNumberAsCurrency(deliveryCost)}</span>
         </PriceSummary>
         <TotalSummary>
           <span>Total</span>
           <span>
-            R$ {formatNumberAsCurrency(totalItemsPrice + deliveryPrice)}
+            R$ {formatNumberAsCurrency(totalItemsPrice + deliveryCost)}
           </span>
         </TotalSummary>
       </Summary>
