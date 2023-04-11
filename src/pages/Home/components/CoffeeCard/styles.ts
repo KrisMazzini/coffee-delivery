@@ -1,6 +1,20 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
-export const CoffeeCardContainer = styled.div`
+const slideCardUp = keyframes`
+  from {
+    transform: translateY(5rem);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+`
+
+interface CoffeeCardContainerProps {
+  isVisible: boolean
+}
+
+export const CoffeeCardContainer = styled.div<CoffeeCardContainerProps>`
   width: 25.6rem;
   min-height: 31rem;
 
@@ -9,10 +23,26 @@ export const CoffeeCardContainer = styled.div`
   align-items: center;
   gap: 1.6rem;
 
+  opacity: ${(props) => (props.isVisible ? 1 : 0)};
+
+  transition: opacity 300ms ease-in-out;
+  animation: ${(props) => (props.isVisible ? slideCardUp : '')} 300ms
+    ease-in-out both;
+
   padding: 0 2rem 2rem;
   border-radius: 6px 36px 6px 36px;
 
   background-color: ${(props) => props.theme['base-card']};
+
+  img {
+    transition: transform 200ms linear;
+  }
+
+  &:hover {
+    img {
+      transform: scale(1.2) rotate(45deg);
+    }
+  }
 `
 
 export const CoffeeHeader = styled.div`

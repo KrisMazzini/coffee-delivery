@@ -1,5 +1,23 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import background from '../../../../assets/banner-background.png'
+
+const slideBannerImage = keyframes`
+  0% {
+    transform: translateY(-50vh);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: translateY(20vh);
+  }
+`
+
+export const slideBenefits = keyframes`
+  from {
+    transform: translateY(100vh);
+  }
+`
 
 export const BannerContainer = styled.header`
   padding: 2.4rem 0 2.8rem;
@@ -40,6 +58,7 @@ export const BannerContainer = styled.header`
     img {
       grid-area: image;
       display: initial;
+      animation: ${slideBannerImage} 800ms ease-in-out both;
     }
   }
 `
@@ -116,5 +135,6 @@ export const BenefitItem = styled.li`
   align-items: center;
   gap: 1.2rem;
 
+  animation: ${slideBenefits} 300ms ease-in-out both;
   color: ${(props) => props.theme['base-text']};
 `

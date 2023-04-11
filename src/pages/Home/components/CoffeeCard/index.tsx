@@ -1,4 +1,4 @@
-import { FormEvent, useContext, useState } from 'react'
+import { FormEvent, useContext, useEffect, useRef, useState } from 'react'
 import { ShoppingCartSimple } from 'phosphor-react'
 
 import {
@@ -27,6 +27,9 @@ export function CoffeeCard({
   price,
 }: CoffeeType) {
   const [amount, setAmount] = useState(0)
+  const [isVisible, setIsVisible] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
   const { addItemToCart } = useContext(CartContext)
 
   function increaseAmount() {
@@ -50,8 +53,32 @@ export function CoffeeCard({
     setAmount(0)
   }
 
+  useEffect(() => {
+    const containerRef = ref.current
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.2 },
+    )
+
+    if (containerRef) {
+      observer.observe(containerRef)
+    }
+
+    return () => {
+      if (containerRef) {
+        observer.unobserve(containerRef)
+      }
+    }
+  }, [ref])
+
   return (
-    <CoffeeCardContainer>
+    <CoffeeCardContainer ref={ref} isVisible={isVisible}>
       <CoffeeHeader>
         <img src={imageUrl} alt="" />
         <TagList>

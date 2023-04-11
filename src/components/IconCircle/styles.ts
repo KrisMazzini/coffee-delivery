@@ -22,4 +22,9 @@ export const IconCircleContainer = styled.div<IconCircleContainerProps>`
   border-radius: 50%;
 
   background-color: ${(props) => props.theme[BG_COLORS[props.bgColor]]};
+
+  transition: transform 150ms linear;
+  &:hover {
+    transform: scale(1.3);
+  }
 `
