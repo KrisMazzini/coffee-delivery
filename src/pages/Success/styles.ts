@@ -19,7 +19,6 @@ const finishImageSlide = keyframes`
 const fadeHeaderIn = keyframes`
   from {
     opacity: 0;
-    /* transform: rotateX(90deg); */
   }
 `
 
