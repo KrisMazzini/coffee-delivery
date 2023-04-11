@@ -1,26 +1,25 @@
 import styled, { keyframes } from 'styled-components'
 
-const slidePageIn = keyframes`
-  0% {
-    transform: translateX(-100vw);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
-`
-
 const slideImageIn = keyframes`
-  0% {
+  from {
     transform: translateX(-100vw);
   }
   
-  50% {
-    transform: translateX(50%) scale(1.2);
+  to {
+    transform: translateX(-50%) scale(1.2);
   }
+`
 
-  100% {
-    transform: translateX(0);
+const finishImageSlide = keyframes`
+  to {
+    transform: translateX(0) scale(1);
+  }
+`
+
+const fadeHeaderIn = keyframes`
+  from {
+    opacity: 0;
+    /* transform: rotateX(90deg); */
   }
 `
 
@@ -39,11 +38,11 @@ export const SuccessContainer = styled.main`
     width: 100%;
     max-width: 49.2rem;
     margin: 0 auto;
-    animation: ${slideImageIn} 1.2s ease-in-out both;
-    animation-delay: 1.5s;
-  }
+    animation: ${slideImageIn} 1.2s ease-in-out both,
+      ${finishImageSlide} 0.5s ease-in-out 1.4s both;
 
-  animation: ${slidePageIn} 500ms ease-in-out both;
+    transform: translateX(-50%);
+  }
 
   @media (min-width: 1144px) {
     grid-template-areas: 'header header' 'details illustration';
@@ -52,6 +51,8 @@ export const SuccessContainer = styled.main`
 
 export const Header = styled.header`
   grid-area: header;
+
+  animation: ${fadeHeaderIn} 0.5s ease-in-out 2s both;
 
   h2 {
     margin-bottom: 0.4rem;

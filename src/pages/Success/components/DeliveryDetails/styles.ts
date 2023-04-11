@@ -25,8 +25,7 @@ export const DeliveryDetailsContainer = styled.div`
     background-color: ${(props) => props.theme.white};
   }
 
-  animation: ${rotateOpen} 600ms ease-in-out both;
-  animation-delay: 700ms;
+  animation: ${rotateOpen} 0.5s ease-in-out 1.4s both;
 
   @media (min-width: 1144px) {
     width: 52.6rem;
