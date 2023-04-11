@@ -9,7 +9,8 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
   padding: 1.6rem 4rem;
   box-shadow: none;
 
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: visible;
 
   position: fixed;
   top: 0;

@@ -5,6 +5,7 @@ export const CartActionTypes = {
   INCREASE_CART_ITEM_AMOUNT: 'INCREASE_CART_ITEM_AMOUNT',
   DECREASE_CART_ITEM_AMOUNT: 'DECREASE_CART_ITEM_AMOUNT',
   REMOVE_CART_ITEM: 'REMOVE_CART_ITEM',
+  CHANGE_CITY: 'CHANGE_CITY',
   COMPLETE_ORDER: 'COMPLETE_ORDER',
 }
 
@@ -40,6 +41,16 @@ export function removeCartItemAction(itemId: string) {
     type: CartActionTypes.REMOVE_CART_ITEM,
     payload: {
       itemId,
+    },
+  }
+}
+
+export function changeCityAction(city: string, state: string) {
+  return {
+    type: CartActionTypes.CHANGE_CITY,
+    payload: {
+      city,
+      state,
     },
   }
 }

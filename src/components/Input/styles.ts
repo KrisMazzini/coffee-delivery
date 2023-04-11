@@ -66,6 +66,10 @@ export const InputContainer = styled.div<InputContainerProps>`
       color: ${(props) => props.theme['base-label']};
       text-transform: capitalize;
     }
+
+    &:disabled {
+      color: ${(props) => props.theme.purple};
+    }
   }
 
   p {

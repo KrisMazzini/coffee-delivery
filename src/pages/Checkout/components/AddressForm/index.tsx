@@ -1,13 +1,27 @@
+import { useContext, useEffect } from 'react'
+import { useFormContext } from 'react-hook-form'
 import { MapPinLine } from 'phosphor-react'
 import { useTheme } from 'styled-components'
 
 import { AddressFormContainer, AddressRow } from './styles'
 
+import { CartContext } from '../../../../contexts/CartContext'
 import { FormCard } from '../FormCard'
 import { Input } from '../../../../components/Input'
 
 export function AddressForm() {
   const theme = useTheme()
+  const { setValue } = useFormContext()
+  const {
+    deliveryData: { address },
+  } = useContext(CartContext)
+
+  useEffect(() => {
+    const { city, state } = address
+
+    setValue('city', city)
+    setValue('state', state)
+  }, [address, setValue])
 
   const icon = <MapPinLine size={22} color={theme['yellow-dark']} />
 
@@ -55,7 +69,14 @@ export function AddressForm() {
         </AddressRow>
         <AddressRow>
           <Input id="district" name="district" placeholder="bairro" required />
-          <Input id="city" name="city" placeholder="cidade" grow required />
+          <Input
+            id="city"
+            name="city"
+            placeholder="cidade"
+            grow
+            required
+            disabled
+          />
           <Input
             id="state"
             name="state"
@@ -64,6 +85,7 @@ export function AddressForm() {
             minLength={2}
             maxLength={2}
             required
+            disabled
           />
         </AddressRow>
       </AddressFormContainer>

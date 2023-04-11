@@ -43,6 +43,10 @@ export const SuccessContainer = styled.main`
     transform: translateX(-50%);
   }
 
+  > header {
+    animation: ${fadeHeaderIn} 0.5s ease-in-out 2s both;
+  }
+
   @media (min-width: 1144px) {
     grid-template-areas: 'header header' 'details illustration';
   }
@@ -50,8 +54,6 @@ export const SuccessContainer = styled.main`
 
 export const Header = styled.header`
   grid-area: header;
-
-  animation: ${fadeHeaderIn} 0.5s ease-in-out 2s both;
 
   h2 {
     margin-bottom: 0.4rem;

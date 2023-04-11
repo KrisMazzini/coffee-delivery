@@ -6,6 +6,7 @@ import {
   decreaseCartItemAmountAction,
   removeCartItemAction,
   completeOrderAction,
+  changeCityAction,
 } from '../reducers/cart/actions'
 import {
   CartItemType,
@@ -16,11 +17,12 @@ import {
 interface CartContextType {
   items: CartItemType[]
   deliveryCost: number
-  deliveryData: DeliveryDataType | null
+  deliveryData: DeliveryDataType
   addItemToCart: (item: CartItemType) => void
   increaseCartItemAmount: (itemId: string) => void
   decreaseCartItemAmount: (itemId: string) => void
   removeCartItem: (itemId: string) => void
+  changeCity: (city: string, state: string) => void
   completeOrder: (deliveryData: DeliveryDataType) => void
 }
 
@@ -36,7 +38,20 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     {
       items: [],
       deliveryCost: 3.5,
-      deliveryData: null,
+      deliveryData: {
+        address: {
+          zipCode: '',
+          street: '',
+          number: '',
+          complement: '',
+          district: '',
+          city: '',
+          state: '',
+        },
+        payment: '',
+        orderTime: null,
+        deliveryTime: null,
+      },
     },
     (initialState) => {
       const storedCartStateAsJSON = localStorage.getItem(
@@ -69,6 +84,10 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     dispatch(removeCartItemAction(itemId))
   }
 
+  function changeCity(city: string, state: string) {
+    dispatch(changeCityAction(city, state))
+  }
+
   function completeOrder(deliveryData: DeliveryDataType) {
     dispatch(completeOrderAction(deliveryData))
   }
@@ -89,6 +108,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         decreaseCartItemAmount,
         removeCartItem,
         completeOrder,
+        changeCity,
       }}
     >
       {children}

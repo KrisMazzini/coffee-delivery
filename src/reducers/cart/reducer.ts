@@ -20,14 +20,14 @@ export interface AddressType {
 export interface DeliveryDataType {
   address: AddressType
   paymentMethod: string
-  orderTime: Date
-  deliveryTime: Date
+  orderTime: Date | null
+  deliveryTime: Date | null
 }
 
 export interface CartState {
   items: CartItemType[]
   deliveryCost: number
-  deliveryData: DeliveryDataType | null
+  deliveryData: DeliveryDataType
 }
 
 export function cartReducer(state: CartState, action: any) {
@@ -75,6 +75,12 @@ export function cartReducer(state: CartState, action: any) {
         if (itemIndex >= 0) {
           draft.items.splice(itemIndex, 1)
         }
+      })
+    }
+    case CartActionTypes.CHANGE_CITY: {
+      return produce(state, (draft) => {
+        draft.deliveryData.address.city = action.payload.city
+        draft.deliveryData.address.state = action.payload.state
       })
     }
     case CartActionTypes.COMPLETE_ORDER: {

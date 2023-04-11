@@ -9,7 +9,7 @@ import { DeliveryDetails } from './components/DeliveryDetails'
 export function Success() {
   const { deliveryData } = useContext(CartContext)
 
-  return deliveryData ? (
+  return deliveryData.orderTime && deliveryData.deliveryTime ? (
     <SuccessContainer>
       <Header>
         <h2>Uhu! Pedido confirmado</h2>
@@ -22,13 +22,11 @@ export function Success() {
       <img src={deliveryIllustration} alt="" />
     </SuccessContainer>
   ) : (
-    <SuccessContainer>
-      <Header>
-        <h2>Ooops! Parece que você não tem nenhum pedido em andamento!</h2>
-        <p>
-          Acesse nossa página principal para selecionar seus cafés preferidos!
-        </p>
-      </Header>
-    </SuccessContainer>
+    <Header>
+      <h2>Ooops! Parece que você não tem nenhum pedido em andamento!</h2>
+      <p>
+        Acesse nossa página principal para selecionar seus cafés preferidos!
+      </p>
+    </Header>
   )
 }
