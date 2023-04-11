@@ -1,6 +1,14 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const slideIn = keyframes`
+  0% {
+    transform: translateX(100vw);
+  }
+`
 
 export const CheckoutContainer = styled.main`
+  animation: ${slideIn} 500ms ease-in-out both;
+
   form {
     display: grid;
     grid-template-columns: 1fr;
