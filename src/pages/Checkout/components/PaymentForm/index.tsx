@@ -1,4 +1,5 @@
-import { ReactNode, useState } from 'react'
+import { ReactNode } from 'react'
+import { useFormContext } from 'react-hook-form'
 import { Bank, CreditCard, CurrencyDollar, Money } from 'phosphor-react'
 import { useTheme } from 'styled-components'
 
@@ -15,10 +16,8 @@ interface PaymentOptionType {
 }
 
 export function PaymentForm() {
-  const [selectedPaymentOptionId, setSelectedPaymentOptionId] = useState<
-    string | null
-  >(null)
   const theme = useTheme()
+  const { watch } = useFormContext()
 
   const paymentOptions: PaymentOptionType[] = [
     {
@@ -38,6 +37,8 @@ export function PaymentForm() {
     },
   ]
 
+  const selectedPaymentOption = watch('payment')
+
   return (
     <FormCard
       icon={<CurrencyDollar color={theme.purple} />}
@@ -51,8 +52,7 @@ export function PaymentForm() {
               {...option}
               name="payment"
               key={option.id}
-              checked={option.id === selectedPaymentOptionId}
-              handleSelectOption={() => setSelectedPaymentOptionId(option.id)}
+              selected={option.title === selectedPaymentOption}
             />
           )
         })}

@@ -12,19 +12,16 @@ import {
 interface RadioBoxProps extends InputHTMLAttributes<HTMLInputElement> {
   icon: ReactNode
   name: string
-  handleSelectOption: () => void
+  selected: boolean
 }
 
-export function RadioBox({ icon, id, name, title }: RadioBoxProps) {
+export function RadioBox({ icon, id, name, title, selected }: RadioBoxProps) {
   const theme = useTheme()
-  const { register, watch } = useFormContext()
+  const { register } = useFormContext()
 
-  const selectedPaymentOption = watch('payment')
-
-  const RadioBoxContainer =
-    selectedPaymentOption === id
-      ? CheckedRadioBoxContainer
-      : UncheckedRadioBoxContainer
+  const RadioBoxContainer = selected
+    ? CheckedRadioBoxContainer
+    : UncheckedRadioBoxContainer
 
   return (
     <>
@@ -32,7 +29,7 @@ export function RadioBox({ icon, id, name, title }: RadioBoxProps) {
         type="radio"
         id={id}
         title={title}
-        value={id}
+        value={title}
         onClick={(event) => event.stopPropagation()}
         required
         {...register(name)}
