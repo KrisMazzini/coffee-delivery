@@ -9,7 +9,7 @@ const CONTAINER_SIZES = {
 export type ContainerSizeType = keyof typeof CONTAINER_SIZES
 
 interface InputContainerProps {
-  fill: boolean
+  grow: boolean
   size: ContainerSizeType
   hasError: boolean
 }
@@ -27,7 +27,7 @@ const showError = keyframes`
 `
 
 export const InputContainer = styled.div<InputContainerProps>`
-  flex-grow: ${(props) => (props.fill ? 1 : 0)};
+  flex-grow: ${(props) => (props.grow ? 1 : 0)};
   flex-shrink: 0;
 
   width: ${(props) => `

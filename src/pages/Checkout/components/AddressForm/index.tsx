@@ -34,7 +34,7 @@ export function AddressForm() {
             name="street"
             placeholder="rua"
             containerSize="md"
-            fill
+            grow
             required
           />
         </AddressRow>
@@ -50,12 +50,12 @@ export function AddressForm() {
             id="complement"
             name="complement"
             placeholder="complemento"
-            fill
+            grow
           />
         </AddressRow>
         <AddressRow>
           <Input id="district" name="district" placeholder="bairro" required />
-          <Input id="city" name="city" placeholder="cidade" fill required />
+          <Input id="city" name="city" placeholder="cidade" grow required />
           <Input
             id="state"
             name="state"

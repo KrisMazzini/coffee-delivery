@@ -8,12 +8,12 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
   registerOptions?: RegisterOptions
   containerSize?: ContainerSizeType
-  fill?: boolean
+  grow?: boolean
 }
 
 export function Input({
   containerSize = 'md',
-  fill = false,
+  grow = false,
   name,
   registerOptions,
   ...inputData
@@ -25,7 +25,7 @@ export function Input({
   const hasError = !!error
 
   return (
-    <InputContainer size={containerSize} fill={fill} hasError={hasError}>
+    <InputContainer size={containerSize} grow={grow} hasError={hasError}>
       <input {...inputData} {...register(name, registerOptions)} />
       {!required && !value && <Optional>Opcional</Optional>}
       <ErrorMessage as="p" name={name} />
